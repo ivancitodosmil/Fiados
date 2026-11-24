@@ -1,0 +1,123 @@
+@import "tailwindcss";
+
+@theme {
+  --color-verde: #2f6d5f;
+  --color-verde-hover: #285e52;
+  --color-verde-claro: #9fd3c5;
+  --color-suave: #e6f3ef;
+  --color-tinta: #18282a;
+  --color-coral: #e8836b;
+  --color-papel: #f4f8f6;
+  --color-gris: #5b6b6c;
+  --color-borde: #e3eae7;
+  --color-pista: #e9f0ed;
+  --color-ok: #1e9e6a;
+  --color-ok-bg: #e3f5ec;
+  --color-warn: #f2b705;
+  --color-warn-text: #8a6100;
+  --color-warn-bg: #fff4d6;
+  --color-bad: #c62828;
+  --color-bad-bg: #fde7e7;
+  --color-wa: #e7f6ee;
+  --color-tag-borde: #cfdad6;
+
+  --font-sans: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+
+  --shadow-card: 0 1px 2px rgba(24, 40, 42, 0.05), 0 6px 20px -8px rgba(24, 40, 42, 0.12);
+  --shadow-tab: 0 -6px 20px -10px rgba(24, 40, 42, 0.18);
+  --shadow-pop: 0 24px 60px -20px rgba(24, 40, 42, 0.35);
+
+  --radius-card: 24px;
+
+  --animate-fade-in: fade-in 160ms ease-out;
+  --animate-sheet-in: sheet-in 220ms cubic-bezier(0.32, 0.72, 0, 1);
+
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes sheet-in {
+    from { opacity: 0; transform: translateY(16px) scale(0.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+::selection {
+  background: #9fd3c5;
+  color: #18282a;
+}
+
+body {
+  background: #ffffff;
+  color: var(--color-tinta);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.font-display {
+  letter-spacing: -0.01em;
+}
+
+/* Montos: Poppins con cifras tabulares */
+.num {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+
+/* Inputs a 16px para que iOS no haga zoom (en la capa base para que las utilidades lo puedan cambiar) */
+@layer base {
+  input,
+  select,
+  textarea {
+    font-size: 16px;
+  }
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.press {
+  transition: transform 120ms ease-out, background-color 150ms ease, box-shadow 150ms ease, color 150ms ease;
+}
+.press:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
+@media (hover: none) {
+  .press:hover {
+    filter: none;
+  }
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    transition-duration: 1ms !important;
+  }
+  .press:active:not(:disabled) {
+    transform: none;
+  }
+}
